@@ -37,14 +37,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     if (req.method === 'GET') {
-        const { resultId } = req.query
+        const { id } = req.query
+        console.log('resultId:', id);
 
-        if (!resultId || typeof resultId !== 'string') {
+        if (!id || typeof id !== 'string') {
             return res.status(400).json({ message: 'Missing or invalid resultId' })
         }
 
         try {
-            const backendRes = await fetch(`${process.env.API_END_POINT}/api/v1/survey/result/${resultId}`, {
+            const backendRes = await fetch(`${process.env.API_END_POINT}/api/v1/survey/result/${id}`, {
                 method: 'GET',
                 headers: {
                     Authorization: token,
