@@ -14,7 +14,7 @@ export default function LogoutPage() {
             const data = await res.json()
 
             if (res.ok) {
-                router.push('./login')
+                router.push('/')
             } else {
                 alert(data.message || 'Lỗi đăng xuất')
             }

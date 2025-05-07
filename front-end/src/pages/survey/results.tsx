@@ -212,7 +212,6 @@ const SurveyResultPage = () => {
 
             {loadingMajors && (
                 <div className="text-center text-gray-500 flex justify-center items-center gap-2">
-                    {/* <Loader2 className="animate-spin w-4 h-4" /> */}
                     Đang tải danh sách ngành học phù hợp...
                 </div>
             )}
@@ -224,8 +223,7 @@ const SurveyResultPage = () => {
                         {majors.map((major) => (
                             <div
                                 key={major._id}
-                                className={`p-4 rounded-md shadow border border-gray-100 text-left ${major.major_url ? 'bg-blue-50' : 'bg-white'
-                                    }`}
+                                className={`p-4 rounded-md shadow border border-gray-100 text-left ${major.major_url ? 'bg-blue-50' : 'bg-white'}`}
                             >
                                 <h3 className="text-md font-semibold text-blue-700">{major.major_name}</h3>
                                 <p className="text-sm text-gray-600">Trường: {major.uni_code}</p>
