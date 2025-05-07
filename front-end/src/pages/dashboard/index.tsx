@@ -33,7 +33,8 @@ export default function AdminDashboard() {
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
-            <BackButton />
+            <Button label="Trang chủ" variant='secondary' onClick={() => router.push("./")} />
+
             <p className="text-3xl font-bold mb-6 text-gray-800 text-center uppercase">
                 setting
             </p>
