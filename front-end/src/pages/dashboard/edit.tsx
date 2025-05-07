@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import Button from '@components/UI/Button'
 
@@ -18,7 +18,7 @@ export default function Edit() {
             <div className="w-[60vw] space-y-4 flex flex-col mx-auto">
                 {items.map((item, index) => (
                     <Button key={index}
-                    onClick={() => router.push(item.route)} label={`${item.label}`}/>
+                        onClick={() => router.push(item.route)} label={`${item.label}`} />
                 ))}
             </div>
         </div>

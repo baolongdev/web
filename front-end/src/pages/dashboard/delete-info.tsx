@@ -29,8 +29,9 @@ export default function DeleteInfo() {
                 setSuccess(true);
                 // Redirect or show a success message
             }
-        } catch (error: any) {
-            setErrorMsg(error?.response?.data?.message || 'Đã có lỗi xảy ra!');
+        } catch (error: unknown) {
+            setErrorMsg('Đã có lỗi xảy ra!');
+            console.error('Error deleting account:', error);
         } finally {
             setLoading(false);
             setShowModal(false);
@@ -42,7 +43,7 @@ export default function DeleteInfo() {
             <h1 className="text-2xl font-bold text-red-600 mb-4">Xóa tài khoản</h1>
             <p className="mb-4">Bạn có chắc chắn muốn xóa tài khoản này không? Thao tác này không thể hoàn tác.</p>
 
-            <Button variant='danger' label='Xóa tài khoản' onClick={() => setShowModal(true)}/>
+            <Button variant='danger' label='Xóa tài khoản' onClick={() => setShowModal(true)} />
 
             {/* Modal */}
             {showModal && (

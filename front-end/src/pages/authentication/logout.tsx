@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import LogoutButton from '@components/UI/LogoutButton'
 import Button from '@components/UI/Button'
 
 export default function LogoutPage() {
@@ -38,7 +37,7 @@ export default function LogoutPage() {
             <p className="text-gray-500 mb-6 text-center max-w-md">
                 Nhấn vào nút bên dưới để thoát khỏi hệ thống và quay lại trang đăng nhập.
             </p>
-            <Button variant='danger' label='Đăng xuất' onClick={handleLogout}/>
+            <Button variant='danger' label='Đăng xuất' onClick={handleLogout} />
         </div >
     )
 }

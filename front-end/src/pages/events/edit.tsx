@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 
 interface Question {
@@ -131,7 +132,7 @@ export default function ManageQuestions() {
 
             {/* FORM TẠO sự kiện mới */}
             {selectedAction === 'create' && (
-                <form onSubmit={() => {}} className="space-y-4 p-4 border rounded bg-white shadow">
+                <form onSubmit={() => { }} className="space-y-4 p-4 border rounded bg-white shadow">
                     <h2 className="text-lg font-semibold">Tạo sự kiện mới</h2>
 
                     <div className="flex flex-col gap-2">
@@ -198,9 +199,8 @@ export default function ManageQuestions() {
                         {questions.map((q) => (
                             <div
                                 key={q._id}
-                                className={`p-4 border rounded flex justify-between items-center ${
-                                    q.isDeleted ? 'bg-gray-100 text-gray-500' : ''
-                                }`}
+                                className={`p-4 border rounded flex justify-between items-center ${q.isDeleted ? 'bg-gray-100 text-gray-500' : ''
+                                    }`}
                             >
                                 <div className="max-w-[600px]">
                                     <p className="font-semibold">{q.question_text}</p>
@@ -250,9 +250,8 @@ export default function ManageQuestions() {
                         {questions.map((q) => (
                             <div
                                 key={q._id}
-                                className={`p-4 border rounded flex justify-between items-center ${
-                                    q.isDeleted ? 'bg-gray-100 text-gray-500' : ''
-                                }`}
+                                className={`p-4 border rounded flex justify-between items-center ${q.isDeleted ? 'bg-gray-100 text-gray-500' : ''
+                                    }`}
                             >
                                 <div>
                                     <p className="font-semibold">{q.question_text}</p>

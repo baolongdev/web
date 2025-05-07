@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import PersonalInfo from '@components/Dashboard/PersonalInfo';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -33,21 +34,19 @@ export default function AdminDashboard() {
                 {/* Menu bên trái */}
                 <div
                     onClick={() => alert('Coming soon')}
-                    className={`px-6 py-2 bg-secondary hover:cursor-pointer hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] hover:-translate-y-1 text-info ${
-                        selectedTab === 'profile'
+                    className={`px-6 py-2 bg-secondary hover:cursor-pointer hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] hover:-translate-y-1 text-info ${selectedTab === 'profile'
                             ? 'bg-blue-100 text-blue-700 font-semibold'
                             : 'bg-white shadow hover:shadow-md'
-                    }`}
+                        }`}
                 >
                     <p className="font-bold text-light whitespace-nowrap text-center">Thông tin cá nhân</p>
                 </div>
                 <div
                     onClick={() => router.push('/dashboard/delete-info')}
-                    className={`px-6 py-2 bg-secondary hover:cursor-pointer hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] hover:-translate-y-1 text-info ${
-                        selectedTab === 'profile'
+                    className={`px-6 py-2 bg-secondary hover:cursor-pointer hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] hover:-translate-y-1 text-info ${selectedTab === 'profile'
                             ? 'bg-blue-100 text-blue-700 font-semibold'
                             : 'bg-white shadow hover:shadow-md'
-                    }`}
+                        }`}
                 >
                     <p className="font-bold text-light whitespace-nowrap text-center">Xóa thông tin người dùng</p>
                 </div>
@@ -55,21 +54,19 @@ export default function AdminDashboard() {
                     onClick={() => {
                         router.push('/dashboard/edit');
                     }}
-                    className={`px-6 py-2 bg-secondary hover:cursor-pointer hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] hover:-translate-y-1 text-info ${
-                        selectedTab === 'profile'
+                    className={`px-6 py-2 bg-secondary hover:cursor-pointer hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] hover:-translate-y-1 text-info ${selectedTab === 'profile'
                             ? 'bg-blue-100 text-blue-700 font-semibold'
                             : 'bg-white shadow hover:shadow-md'
-                    }`}
+                        }`}
                 >
                     <p className="font-bold text-light whitespace-nowrap text-center">Chỉnh sửa</p>
                 </div>
                 <div
                     onClick={() => router.push('/survey/history')}
-                    className={`px-6 py-2 bg-secondary hover:cursor-pointer hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] hover:-translate-y-1 text-info ${
-                        selectedTab === 'profile'
+                    className={`px-6 py-2 bg-secondary hover:cursor-pointer hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] hover:-translate-y-1 text-info ${selectedTab === 'profile'
                             ? 'bg-blue-100 text-blue-700 font-semibold'
                             : 'bg-white shadow hover:shadow-md'
-                    }`}
+                        }`}
                 >
                     <p className="font-bold text-light whitespace-nowrap text-center">Lịch sử bài làm</p>
                 </div>

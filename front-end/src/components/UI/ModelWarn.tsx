@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 import React, { useState } from 'react';
 
@@ -14,8 +15,10 @@ const ConfirmDeleteModal = () => {
             // Sau khi thành công:
             alert('Tài khoản đã được xóa!');
             setShowModal(false);
-        } catch (error) {
+        } catch (error: unknown) {
+            console.error('Error deleting account:', error);
             setErrorMsg('Xóa thất bại. Vui lòng thử lại.');
+
         } finally {
             setLoading(false);
         }
