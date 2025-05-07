@@ -12,6 +12,8 @@ const protectedRoutes = [
     { path: '/dashboard/change-password', role: 'user' },
     // { path: '/survey', role: 'user' },
     // { path: '/survey/take-test', role: 'user' },
+    { path: '/environment', role: 'user' },
+    { path: '/environment', role: 'admin' },
     { path: '/survey/result', role: 'user' },
     { path: '/events/edit', role: 'user' },
 ]
