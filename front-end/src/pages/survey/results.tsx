@@ -25,6 +25,7 @@ interface Major {
     major_name: string
     major_standard_score: number
     major_aptitude_trends: string[]
+    major_url?: string
 }
 
 
@@ -94,10 +95,17 @@ const SurveyResultPage = () => {
                 const data = await res.json()
 
                 if (res.ok && Array.isArray(data.metadata?.fullMatched)) {
-                    setMajors(data.metadata.fullMatched)
+                    if (data.metadata.fullMatched.length > 0) {
+                        setMajors(data.metadata.fullMatched);
+                    } else if (Array.isArray(data.metadata.partialMatched)) {
+                        setMajors(data.metadata.partialMatched.slice(0, 20));
+                    } else {
+                        setErrorMajors('Không thể tải ngành học (dữ liệu không đầy đủ).');
+                    }
                 } else {
-                    setErrorMajors(data.message || 'Không thể tải ngành học.')
+                    setErrorMajors(data.message || 'Không thể tải ngành học.');
                 }
+
 
             } catch (err) {
                 console.error('Lỗi khi tải ngành học:', err)
@@ -214,15 +222,29 @@ const SurveyResultPage = () => {
                     <h2 className="text-lg font-semibold text-gray-800">Ngành học phù hợp với Holland Code</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
                         {majors.map((major) => (
-                            <div key={major._id} className="bg-white p-4 rounded-md shadow border border-gray-100 text-left">
+                            <div
+                                key={major._id}
+                                className={`p-4 rounded-md shadow border border-gray-100 text-left ${major.major_url ? 'bg-blue-50' : 'bg-white'
+                                    }`}
+                            >
                                 <h3 className="text-md font-semibold text-blue-700">{major.major_name}</h3>
                                 <p className="text-sm text-gray-600">Trường: {major.uni_code}</p>
                                 <p className="text-sm text-gray-600">Điểm chuẩn: {major.major_standard_score}</p>
                                 <p className="text-sm text-gray-500">
                                     Holland Code: <span className="font-medium">{major.major_aptitude_trends.join(', ')}</span>
                                 </p>
+                                {
+                                    major.major_url && (
+                                        <Button label="Xem chi tiết"
+                                            onClick={() => window.open(major.major_url || '#', '_blank')}
+                                            className="mt-2"
+                                        />
+                                    )
+                                }
+
                             </div>
                         ))}
+
                     </div>
                 </div>
             )}
