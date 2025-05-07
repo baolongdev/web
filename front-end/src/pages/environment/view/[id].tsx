@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useRef } from 'react'
-// Extend JSX to recognize the 'model-viewer' element
 
 
 
@@ -39,8 +38,8 @@ export default function EnvironmentModelPage() {
 
                 const data = await res.json()
 
-                if (res.ok && data?.metadata?.url) {
-                    setModelUrl(data.metadata.url)
+                if (res.ok && data?.metadata?.name) {
+                    setModelUrl(data.metadata.name)
                 } else {
                     console.error('Lỗi lấy signed URL:', data?.message)
                 }
@@ -58,25 +57,30 @@ export default function EnvironmentModelPage() {
     if (!modelUrl) return <p className="text-center mt-8">Không tìm thấy mô hình hoặc signed URL.</p>
 
     return (
-        <div className="max-w-5xl mx-auto p-6">
+        <div className="max-w-5xl mx-auto p-6  w-screen h-screen ">
             <h1 className="text-2xl font-semibold mb-6 text-center">Trình xem mô hình 3D</h1>
+            {modelUrl === "office2" ? (
+                <iframe
+                    src="https://ar-advertisement.vercel.app/model/32d41ecd13"
+                    frameBorder="0"
+                    className="w-full h-full"
+                />
+            ) : modelUrl === "hospital" ? (
+                <iframe
+                    src="https://ar-advertisement.vercel.app/model/43535633b9"
+                    frameBorder="0"
+                    className="w-full h-full"
+                />
+            ) : modelUrl === "laboratory" ? (
+                <iframe
+                    src="https://ar-advertisement.vercel.app/model/d174592b9f"
+                    frameBorder="0"
+                    className="w-full h-full"
+                />
+            ) : (
+                <div className="text-center text-gray-500 mt-4">Đang phát triển</div>
+            )}
 
-
-            {/* <model-viewer
-                id="dimension"
-                {...props}
-                src={modelUrl}
-                alt={"Mô hình 3D"}
-                {...(animationOn ? { autoplay: true } : {})}
-                ar-scale="auto"
-                camera-controls
-                touch-action="pan-y"
-                auto-rotate
-                shadow-intensity="1"
-                ar-modes="webxr scene-viewer quick-look"
-                ar
-                style={{ width: '100%', height: '600px' }}
-            ></model-viewer> */}
         </div>
     )
 }
