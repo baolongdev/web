@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import BackButton from '@components/UI/BackButton'
 
 interface GroupScore {
     groupScore: number
@@ -58,6 +59,7 @@ export default function SurveyHistoryPage() {
 
     return (
         <div className="max-w-4xl mx-auto p-6 space-y-6">
+            <BackButton />
             <h1 className="text-2xl font-bold mb-4">Lịch sử khảo sát</h1>
 
             {history.map((item) => (

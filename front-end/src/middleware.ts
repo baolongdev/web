@@ -9,7 +9,10 @@ const protectedRoutes = [
     { path: '/dashboard/change-password', allowedRoles: ['user'] },
     { path: '/dashboard/history', allowedRoles: ['user'] },
     { path: '/environment', allowedRoles: ['user', 'admin'] },
-    { path: '/survey/result', allowedRoles: ['user'] },
+    { path: '/survey/result', allowedRoles: ['user', 'admin'] },
+    { path: '/survey/history', allowedRoles: ['user', 'admin'] },
+    { path: '/survey/manage-questions', allowedRoles: ['user', 'admin'] },
+    { path: '/survey/trash', allowedRoles: ['user', 'admin'] },
     { path: '/dashboard', allowedRoles: ['user', 'admin'] },
     { path: '/authentication/logout', allowedRoles: ['user', 'admin'] },
 ]
