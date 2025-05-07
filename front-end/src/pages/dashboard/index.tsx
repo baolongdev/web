@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import Button from '@components/UI/Button';
+import BackButton from '@components/UI/BackButton';
 
 export default function AdminDashboard() {
     const [selectedTab, setSelectedTab] = useState<'users' | 'edit' | 'history' | 'profile'>('profile');
@@ -32,6 +33,7 @@ export default function AdminDashboard() {
 
     return (
         <div className="min-h-screen bg-gray-100 p-6">
+            <BackButton />
             <p className="text-3xl font-bold mb-6 text-gray-800 text-center uppercase">
                 setting
             </p>
@@ -39,7 +41,16 @@ export default function AdminDashboard() {
             <div className="w-[60vw] space-y-4 flex flex-col mx-auto">
                 <Button label="Thông tin cá nhân" onClick={() => alert('Coming soon')} />
 
-                <Button label="Làm khảo sát" variant="pink" onClick={() => router.push('/survey')} />
+                <Button label="Làm khảo sát" variant="pink" onClick={
+                    () => {
+                        localStorage.removeItem('pendingAnswers');
+                        router.push('/survey')
+                    }
+                }
+                />
+
+
+
 
                 {/* Chỉ admin mới thấy nút chỉnh sửa */}
                 {role === 'admin' && (

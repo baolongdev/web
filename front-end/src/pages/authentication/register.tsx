@@ -42,7 +42,7 @@ export default function RegisterPage() {
 
             if (res.ok) {
 
-                router.push('/')
+                router.back()
             } else {
                 setError(data.message || 'Đã xảy ra lỗi khi đăng ký')
             }

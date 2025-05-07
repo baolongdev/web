@@ -31,18 +31,12 @@ export default function Header() {
                     </a>
 
                     <div className="hidden lg:flex gap-4 items-center">
-                        <button
-                            className="px-6 py-2 bg-secondary hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] text-info"
-                            onClick={() => window.open('/survey', '_self')}
-                        >
-                            <p className="font-bold text-light whitespace-nowrap">Khảo sát ngay</p>
-                        </button>
-                        <button
-                            className="px-6 py-2 bg-accent hover:shadow-[0_10px_0] transition-all rounded-xl shadow-[0_4px_0] text-pink-500"
+                        <Button className='w-full p-2 mt-4' label={"Đăng nhập"}
+                            onClick={() => window.open('./authentication/login', '_self')}
+                        ></Button>
+                        <Button className='w-full p-2 mt-4' label={"Mô phỏng"}
                             onClick={() => window.open('/environment', '_self')}
-                        >
-                            <p className="font-bold text-light whitespace-nowrap">Mô phỏng</p>
-                        </button>
+                        ></Button>
                     </div>
                 </nav>
             </div>
@@ -70,8 +64,8 @@ export default function Header() {
                         định hướng nghề nghiệp và lựa chọn ngành học
                         phù hợp để xây dựng tương lai vững chắc
                     </p>
-                    <Button label="Đăng nhập"
-                        onClick={() => window.open('./authentication/login', '_self')}
+                    <Button label="Khảo sát ngay"
+                        onClick={() => window.open('/survey', '_self')}
                     />
                 </div>
             </Container>
