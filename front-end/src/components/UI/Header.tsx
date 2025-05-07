@@ -31,7 +31,7 @@ export default function Header() {
                     </a>
 
                     <div className="hidden lg:flex gap-4 items-center">
-                        <Button className='w-full p-2 mt-4' label={"Đăng nhập"}
+                        <Button className='w-full p-2 mt-4' label={"Bảng điều khiển"}
                             onClick={() => window.open('./authentication/login', '_self')}
                         ></Button>
                         <Button className='w-full p-2 mt-4' label={"Mô phỏng"}
