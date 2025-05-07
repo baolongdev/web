@@ -35,6 +35,7 @@ export default function Header() {
                             onClick={() => window.open('./authentication/login', '_self')}
                         ></Button>
                         <Button className='w-full p-2 mt-4' label={"Mô phỏng"}
+                            variant='danger'
                             onClick={() => window.open('/environment', '_self')}
                         ></Button>
                     </div>
