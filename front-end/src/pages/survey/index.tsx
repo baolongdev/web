@@ -1,4 +1,5 @@
 import BackButton from '@components/UI/BackButton'
+import Button from '@components/UI/Button'
 import { useRouter } from 'next/router'
 
 export default function SurveyIndexPage() {
@@ -17,12 +18,10 @@ export default function SurveyIndexPage() {
                     Hãy bắt đầu bài khảo sát để tìm hiểu nhóm tính cách nghề nghiệp của bạn theo mô hình Holland (RIASEC).
                 </p>
                 <div className="flex justify-center">
-                    <button
+                    <Button label="Bắt đầu khảo sát"
                         onClick={handleStartSurvey}
-                        className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
-                    >
-                        Bắt đầu khảo sát
-                    </button>
+                    />
+
                 </div>
             </div>
         </div>

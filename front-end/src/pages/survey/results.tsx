@@ -5,6 +5,7 @@ import { Pie } from 'react-chartjs-2'
 import { Chart as ChartJS, Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale } from 'chart.js'
 import ChartDataLabels, { Context } from 'chartjs-plugin-datalabels'
 import BackButton from '@components/UI/BackButton'
+import Button from '@components/UI/Button'
 
 ChartJS.register(Title, Tooltip, Legend, ArcElement, CategoryScale, LinearScale, ChartDataLabels)
 
@@ -231,12 +232,9 @@ const SurveyResultPage = () => {
             )}
 
             <div className="text-center">
-                <button
-                    className="bg-blue-600 text-white px-6 py-3 rounded-full shadow hover:bg-blue-700 transition-all duration-200 print:hidden"
+                <Button label="Tải kết quả"
                     onClick={downloadResult}
-                >
-                    Tải kết quả
-                </button>
+                />
             </div>
         </div>
     )

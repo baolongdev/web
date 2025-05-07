@@ -2,7 +2,7 @@ import React from 'react';
 
 interface ButtonProps {
     disabled?: boolean;
-    label: string;
+    label: string | React.ReactNode;
     onClick?: () => void;
     className?: string;
     variant?: 'primary' | 'secondary' | 'danger' | 'outline' | 'pink';

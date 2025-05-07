@@ -28,7 +28,14 @@ export default function LoginPage() {
             setLoading(false)
 
             if (res.ok) {
-                router.push('/dashboard')
+                const justLoggedOut = localStorage.getItem('justLoggedOut');
+                localStorage.removeItem('justLoggedOut');
+
+                if (justLoggedOut === 'true') {
+                    router.push('/dashboard');
+                } else {
+                    router.back();
+                }
             } else {
                 setError(data.message || 'Đăng nhập thất bại')
             }
@@ -73,8 +80,11 @@ export default function LoginPage() {
                 >
                     {loading ? 'Đang đăng nhập...' : 'Đăng nhập'}
                 </button> */}
-                <Button variant="pink" className='w-full p-2 rounded text-white hover:bg-pink-500 mt-8' label={loading ? 'Đang đăng nhập...' : 'Đăng nhập'}></Button>
-                
+                <Button className='w-full p-2 mt-4' label={loading ? 'Đang đăng nhập...' : 'Đăng nhập'}></Button>
+                <Button variant='secondary' className='w-full p-2 mt-4' label="Tạo tài khoản mới"
+                    onClick={() => router.push('./register')}
+                ></Button>
+
             </form>
         </div>
     )
