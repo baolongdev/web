@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import BackButton from '@components/UI/BackButton'
 
 interface Model3D {
     _id: string
@@ -48,6 +49,7 @@ export default function ModelDetailPage() {
 
     return (
         <div className="max-w-4xl mx-auto p-6">
+            <BackButton onClick={() => router.back()} />
             <h1 className="text-3xl font-bold mb-4">{model.object3d_name}</h1>
             <Image
                 src={model.object3d_thumbnailUrl}

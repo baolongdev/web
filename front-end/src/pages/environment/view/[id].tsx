@@ -1,3 +1,4 @@
+import BackButton from '@components/UI/BackButton'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { useRef } from 'react'
@@ -58,6 +59,7 @@ export default function EnvironmentModelPage() {
 
     return (
         <div className="max-w-5xl mx-auto p-6  w-screen h-screen ">
+            <BackButton onClick={() => router.back()} />
             <h1 className="text-2xl font-semibold mb-6 text-center">Trình xem mô hình 3D</h1>
             {modelUrl === "office2" ? (
                 <iframe
