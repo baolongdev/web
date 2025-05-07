@@ -1,24 +1,19 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-// Các route cần phân quyền
+// Các route cần phân quyền kèm quyền cho phép
 const protectedRoutes = [
-    { path: '/authentication/logout', role: 'user' },
-    { path: '/authentication/logout', role: 'admin' },
-    { path: '/dashboard', role: 'user' },
-    { path: '/dashboard/edit', role: 'admin' },
-    { path: '/dashboard/history', role: 'user' },
-    { path: '/dashboard/delete-info', role: 'user' },
-    { path: '/dashboard/change-password', role: 'user' },
-    // { path: '/survey', role: 'user' },
-    // { path: '/survey/take-test', role: 'user' },
-    { path: '/environment', role: 'user' },
-    { path: '/environment', role: 'admin' },
-    { path: '/survey/result', role: 'user' },
-    { path: '/events/edit', role: 'user' },
+    { path: '/dashboard/edit', allowedRoles: ['admin'] },
+    { path: '/events/edit', allowedRoles: ['user'] },
+    { path: '/dashboard/delete-info', allowedRoles: ['user'] },
+    { path: '/dashboard/change-password', allowedRoles: ['user'] },
+    { path: '/dashboard/history', allowedRoles: ['user'] },
+    { path: '/environment', allowedRoles: ['user', 'admin'] },
+    { path: '/survey/result', allowedRoles: ['user'] },
+    { path: '/dashboard', allowedRoles: ['user', 'admin'] },
+    { path: '/authentication/logout', allowedRoles: ['user', 'admin'] },
 ]
 
-// Middleware chính
 export function middleware(request: NextRequest) {
     const url = request.nextUrl.clone()
     const { pathname } = url
@@ -26,23 +21,23 @@ export function middleware(request: NextRequest) {
     const token = request.cookies.get('token')?.value || ''
     const role = request.cookies.get('role')?.value || ''
 
-    const route = protectedRoutes.find((r) => pathname.startsWith(r.path))
-    if (token) {
-        if (pathname.startsWith('/authentication/register')) {
-            url.pathname = '/authentication/logout'
-            return NextResponse.redirect(url)
-        }
+    // Không cho người đã đăng nhập vào trang đăng ký
+    if (pathname.startsWith('/authentication/register') && token) {
+        url.pathname = '/dashboard'
+        return NextResponse.redirect(url)
     }
-    // Nếu route cần phân quyền
-    if (route) {
-        // Chưa đăng nhập
+
+    const matchedRoute = protectedRoutes.find(route => pathname.startsWith(route.path))
+
+    if (matchedRoute) {
         if (!token) {
+            // Chưa đăng nhập
             url.pathname = '/authentication/login'
             return NextResponse.redirect(url)
         }
 
-        // Không đúng quyền
-        if (role !== route.role) {
+        if (!matchedRoute.allowedRoles.includes(role)) {
+            // Đã đăng nhập nhưng không đủ quyền
             url.pathname = '/dashboard'
             return NextResponse.redirect(url)
         }
@@ -51,12 +46,12 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
 }
 
-// Định nghĩa các path áp dụng middleware
 export const config = {
     matcher: [
         '/dashboard/:path*',
         '/survey/:path*',
         '/events/edit',
         '/authentication/:path*',
+        '/environment',
     ],
 }
