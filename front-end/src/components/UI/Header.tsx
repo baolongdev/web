@@ -70,8 +70,8 @@ export default function Header() {
                         định hướng nghề nghiệp và lựa chọn ngành học
                         phù hợp để xây dựng tương lai vững chắc
                     </p>
-                    <Button label="Khảo sát ngay"
-                        onClick={() => window.open('/survey', '_self')}
+                    <Button label="Đăng nhập"
+                        onClick={() => window.open('./authentication/login', '_self')}
                     />
                 </div>
             </Container>

@@ -21,7 +21,6 @@ export default function SurveyIndexPage() {
                     <Button label="Bắt đầu khảo sát"
                         onClick={handleStartSurvey}
                     />
-
                 </div>
             </div>
         </div>

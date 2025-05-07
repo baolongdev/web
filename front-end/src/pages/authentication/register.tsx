@@ -41,7 +41,7 @@ export default function RegisterPage() {
             setLoading(false)
 
             if (res.ok) {
-                
+
                 router.push('/')
             } else {
                 setError(data.message || 'Đã xảy ra lỗi khi đăng ký')
@@ -135,25 +135,11 @@ export default function RegisterPage() {
                         <span className="text-gray-700">Khác</span>
                     </label>
                 </div>
-                {/* <button
-                    type="submit"
-                    className={`w-full p-2 rounded ${loading ? 'bg-gray-400' : 'bg-blue-600'} text-white`}
-                    disabled={loading}
-                >
-                    {loading ? 'Đang tạo tài khoản...' : 'Đăng ký'}
-                </button> */}
 
-                <Button variant="primary" className={`w-full p-2 rounded ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-sky-400'} text-white [&:disabled]:bg-gray-400 [&:disabled]:text-gray-200`} disabled={loading} label={loading ? 'Đang tạo tài khoản...' : 'Đăng ký'}></Button>
-
-                {/* <button
-                    type="button"
-                    className="w-full p-2 rounded bg-green-600 text-white hover:bg-green-700 mt-2"
-                    onClick={() => router.push('./login')}
-                >
-                    Đăng nhập
-                </button> */}
-
-                <Button variant="pink" className='w-full p-2 rounded text-white hover:bg-pink-500 mt-2' label='Đăng nhập' onClick={() => router.push('./login')}></Button>
+                <div className='flex justify-left items-center gap-4'>
+                    <Button variant="primary" disabled={loading} label={loading ? 'Đang tạo tài khoản...' : 'Đăng ký'}></Button>
+                    <Button variant="pink" label='Đăng nhập' onClick={() => router.push('./login')}></Button>
+                </div>
 
             </form>
         </div>

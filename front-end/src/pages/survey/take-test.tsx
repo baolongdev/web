@@ -128,6 +128,7 @@ export default function TakeTestPage() {
 
         if (!cookies.userId) {
             alert('Bạn cần đăng nhập để tiếp tục. Đang chuyển hướng đến trang đăng ký...')
+            localStorage.setItem('justLoggedOut', 'true');
             router.push('/authentication/register')
             return
         }

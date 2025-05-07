@@ -1,16 +1,23 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Button from '@components/UI/Button'
+import { useCookies } from 'react-cookie'
 
 export default function LoginPage() {
     const router = useRouter()
     const [form, setForm] = useState({ username: '', password: '' })
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+    const [cookies] = useCookies(['userId'])
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
+    useEffect(() => {
+        if (cookies.userId) {
+            router.push('/dashboard')
+        }
+    }, [cookies.userId, router])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -32,9 +39,9 @@ export default function LoginPage() {
                 localStorage.removeItem('justLoggedOut');
 
                 if (justLoggedOut === 'true') {
-                    router.push('/dashboard');
+                    router.push('/survey/take-test');
                 } else {
-                    router.back();
+                    router.push('/');
                 }
             } else {
                 setError(data.message || 'Đăng nhập thất bại')
