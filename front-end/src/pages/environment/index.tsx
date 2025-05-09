@@ -29,7 +29,12 @@ export default function EnvironmentPage() {
 
             const data = await res.json()
             if (res.ok) {
-                setModels(data.metadata || [])
+                const filtered = (data.metadata || []).filter(
+                    (model: Model3D) =>
+                        model.object3d_name !== 'chemistry_lab' &&
+                        model.object3d_name !== 'office'
+                )
+                setModels(filtered)
             } else {
                 console.error(data.message || 'Có lỗi xảy ra')
             }

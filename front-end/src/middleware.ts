@@ -37,6 +37,12 @@ const protectedRoutes = [
     { path: '/environment/[id]', allowedRoles: ['user', 'admin'] },
     { path: '/environment/view/[id]', allowedRoles: ['user', 'admin'] },
 
+    { path: '/events', allowedRoles: ['user', 'admin'] },
+    { path: '/events/edit', allowedRoles: ['admin'] },
+    { path: '/events/trash', allowedRoles: ['admin'] },
+    { path: '/events/create', allowedRoles: ['admin'] },
+    { path: '/events/[scraperId]/delete', allowedRoles: ['admin'] },
+    { path: '/events/[scraperId]/restore', allowedRoles: ['admin'] },
     // AUTH
     { path: '/authentication/logout', allowedRoles: ['user', 'admin'] },
 ]

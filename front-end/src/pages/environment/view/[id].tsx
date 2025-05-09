@@ -63,13 +63,13 @@ export default function EnvironmentModelPage() {
             <h1 className="text-2xl font-semibold mb-6 text-center">Trình xem mô hình 3D</h1>
             {modelUrl === "office2" ? (
                 <iframe
-                    src="https://ar-advertisement.vercel.app/model/32d41ecd13"
+                    src="https://ar-advertisement.vercel.app/model/c5c1090209"
                     frameBorder="0"
                     className="w-full h-full"
                 />
             ) : modelUrl === "hospital" ? (
                 <iframe
-                    src="https://ar-advertisement.vercel.app/model/43535633b9"
+                    src="https://ar-advertisement.vercel.app/model/c378bb4d09"
                     frameBorder="0"
                     className="w-full h-full"
                 />
